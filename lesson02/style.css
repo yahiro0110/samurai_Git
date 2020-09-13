@@ -5,7 +5,7 @@ body {
 table {
   background-color: white;
   border:solid 1px #666;
-  /* 隣接する枠線を重ねて表示する */
+  /* 隣接する枠線を重ねて表示 */
   border-collapse: collapse;
   /* テーブルの幅を指定 */
   width: 270px;
