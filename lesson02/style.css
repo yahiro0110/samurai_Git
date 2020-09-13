@@ -1,0 +1,25 @@
+body {
+  background-color: #666;
+}
+
+table {
+  background-color: white;
+  border:solid 1px #666;
+  /* 隣接する枠線を重ねて表示する */
+  border-collapse: collapse;
+  /* テーブルの幅を指定 */
+  width: 270px;
+  /* テーブルの幅にあわせて、各セルを等間隔に設定 */
+  table-layout: fixed;
+}
+
+th {
+  background-color: rgb(253, 148, 9);
+  border: solid 1px #666;
+}
+
+td {
+  border: solid 1px #666;
+  /* 文字を右揃えにする */
+  text-align: right;
+}
