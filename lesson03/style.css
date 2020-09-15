@@ -1,0 +1,17 @@
+body {
+  background-color: #666;
+}
+
+table {
+  width: 270px;
+  table-layout: fixed;
+}
+
+th {
+  background-color: rgb(253, 148, 9);
+}
+
+td {
+  background-color: #fff;
+  text-align: right;
+}
