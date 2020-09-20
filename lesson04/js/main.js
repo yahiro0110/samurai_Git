@@ -7,7 +7,7 @@ function create_td(params) {
   newtd.innerHTML = params;
   newtr.appendChild(newtd);
 }
-// 3の数字がつくもの、もしくは３の倍数の場合は以下のtdタグを使用
+// ３の倍数、もしくは３の数字がつくものは以下のtdタグを使用
 function create_td3(params) {
   let newtd = document.createElement('td');
   newtd.classList.add('td__3')
@@ -34,6 +34,7 @@ for (let num = 0; num < 10; num++) {
         create_td(checkNum);
         break;
       default:
+        alert("Error:switch部分で正常に処理できませんでした");
         break;
     }
   }
