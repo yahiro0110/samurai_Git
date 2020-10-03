@@ -1,9 +1,5 @@
 #mouse_stalker {
-  pointer-events: none;
   position: fixed;
-  /* 座標調整（カーソル位置と円の中心を合わせる） */
-  top: -8px;
-  left: -8px;
   /* マウスストーカーの直径 */
   width: 16px;
   height: 16px;

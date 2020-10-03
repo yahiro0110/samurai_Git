@@ -1,27 +1,35 @@
 const stalker = document.getElementById('mouse_stalker');
-
-var mX = 0; // マウスカーソルの座標
-var mY = 0; // マウスカーソルの座標
-var nX = 0; // ストーカーの座標
-var nY = 0; // ストーカーの座標
-
+// マウスカーソルの座標
+let mX = 0;
+let mY = 0;
+// ストーカーの座標
+let X = 0;
+let Y = 0;
+/*---------------------------------------------------- 
+関数の定義 
+----------------------------------------------------*/
+// マウスカーソルの座標取得
 function getMouseXY(e) {
   mX = e.pageX;
   mY = e.pageY;
 }
+// ストーカーの座標設定
+function setMouseStalker () {
+  if (mX > X) {
+    X += 3;
+  } else {
+    X -= 3;
+  }
+  if (mY > Y) {
+    Y += 3;
+  } else {
+    Y -= 3;
+  }
+  stalker.style.left =`${X}px`;
+  stalker.style.top =`${Y}px`;
+}
+/*---------------------------------------------------- 
+マウスストーカー作成
+----------------------------------------------------*/
 document.onmousemove = getMouseXY;
-
-setInterval(function(){
-  if(mX > nX){
-    nX += 3;
-  } else {
-    nX -= 3;
-  }
-  if(mY > nY){
-    nY += 3;
-  } else {
-    nY -= 3;
-  }
-  stalker.style.left = nX + 'px';
-  stalker.style.top = nY + 'px';
-}, 200);
+setInterval(setMouseStalker, 200);
