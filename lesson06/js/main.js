@@ -1,103 +1,91 @@
-function generate_year_range(start, end) {
-  var years = "";
-  for (var year = start; year <= end; year++) {
-      years += "<option value='" + year + "'>" + year + "</option>";
+
+/*----------------------------------------------------------------------------------------- 
+関数の定義 
+-----------------------------------------------------------------------------------------*/
+// HTML要素の作成
+function createHtmlElement(nodeName, elementName, className, colSpanNumber, innerHtmlText){
+  let str = document.createElement(elementName);
+  str.classList.add(className);
+  str.colSpan = colSpanNumber;
+  str.innerHTML = innerHtmlText;
+  nodeName.appendChild(str);
+}
+// カレンダーの年月作成
+function createHead(table, year, month){
+  let table_title = year + "年 " + month + "月";
+  createHtmlElement(table, "th", "head", 7, table_title);
+  // ★不明点：↓後からセルを結合できない？
+  // let HeadSpan = table.getElementsByClassName('head');
+  // HeadSpan.colSpan = 7;
+}
+// カレンダーの曜日タイトル作成
+function createWeekTitle(table){
+  let weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  let weekdaysStr = table.insertRow(table.rows.length);
+  for (let i = 0; i < 7; i++) {
+    switch (i) {
+      case 0:
+        createHtmlElement(weekdaysStr, "th", "sunday", 1, weekdays[i]);
+        break;
+      case 6:
+        createHtmlElement(weekdaysStr, "th", "saturday", 1, weekdays[i]);
+        break;
+      default:
+        createHtmlElement(weekdaysStr, "th", "weekday", 1, weekdays[i]);
+        break;
+    }
   }
-  return years;
 }
-
-var today = new Date();
-var currentMonth = today.getMonth();
-var currentYear = today.getFullYear();
-var selectYear = document.getElementById("year");
-var selectMonth = document.getElementById("month");
-
-var createYear = generate_year_range(1970, 2200);
-
-document.getElementById("year").innerHTML = createYear;
-
-var calendar = document.getElementById("calendar");
-var lang = calendar.getAttribute('data-lang');
-
-var months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-var days = ["日", "月", "火", "水", "木", "金", "土"];
-
-var dayHeader = "<tr>";
-for (day in days) {
-  dayHeader += "<th data-days='" + days[day] + "'>" + days[day] + "</th>";
-}
-dayHeader += "</tr>";
-
-document.getElementById("thead-month").innerHTML = dayHeader;
-
-monthAndYear = document.getElementById("monthAndYear");
-showCalendar(currentMonth, currentYear);
-
-function next() {
-  currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
-  currentMonth = (currentMonth + 1) % 12;
-  showCalendar(currentMonth, currentYear);
-}
-
-function previous() {
-  currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-  currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-  showCalendar(currentMonth, currentYear);
-}
-
-function jump() {
-  currentYear = parseInt(selectYear.value);
-  currentMonth = parseInt(selectMonth.value);
-  showCalendar(currentMonth, currentYear);
-}
-
-function showCalendar(month, year) {
-
-  var firstDay = ( new Date( year, month ) ).getDay();
-
-  tbl = document.getElementById("calendar-body");
-
-  tbl.innerHTML = "";
-
-  monthAndYear.innerHTML = months[month] + " " + year;
-  selectYear.value = year;
-  selectMonth.value = month;
-
-  // creating all cells
-  var date = 1;
-  for ( var i = 0; i < 6; i++ ) {
-      var row = document.createElement("tr");
-
-      for ( var j = 0; j < 7; j++ ) {
-          if ( i === 0 && j < firstDay ) {
-              cell = document.createElement( "td" );
-              cellText = document.createTextNode("");
-              cell.appendChild(cellText);
-              row.appendChild(cell);
-          } else if (date > daysInMonth(month, year)) {
-              break;
-          } else {
-              cell = document.createElement("td");
-              cell.setAttribute("data-date", date);
-              cell.setAttribute("data-month", month + 1);
-              cell.setAttribute("data-year", year);
-              cell.setAttribute("data-month_name", months[month]);
-              cell.className = "date-picker";
-              cell.innerHTML = "<span>" + date + "</span>";
-
-              if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
-                  cell.className = "date-picker selected";
-              }
-              row.appendChild(cell);
-              date++;
-          }
-      }
-
-      tbl.appendChild(row);
+// カレンダーの日付作成
+function createDayBody(table, year, month, firstDate, lastDate){
+  // 空白部分の作成
+  var daysStr = table.insertRow(table.rows.length);
+  let startWeekDay = firstDate.getDay();
+  for (let i = 0; i < startWeekDay; i++) {
+    createHtmlElement(daysStr, "td", "nothing", 1, "&nbsp;");
   }
-
+  // 日付作成
+  for (let i = 1; i <= lastDate.getDate(); i++) {
+    let date = new Date(year, month - 1, i);
+    let weekType = date.getDay();
+    let cellStr = date.getDate();
+    switch (weekType) {
+      case 0:
+        var daysStr = table.insertRow(table.rows.length);
+        createHtmlElement(daysStr, "td", "sunday", 1, cellStr);
+        break;
+      case 6:
+        createHtmlElement(daysStr, "td", "saturday", 1, cellStr);
+        break;
+      default:
+        createHtmlElement(daysStr, "td", "weekday", 1, cellStr);
+        break;
+    }
+  }
+}
+// カレンダー本体の作成
+function createCalender(Num){
+  // 日付の取得
+  let date = new Date();
+  date.setMonth(date.getMonth() + Num);　// 次月、次々月を取得する
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  // 初日と月末の取得
+  let firstDate = new Date(year, month - 1, 1);
+  let lastDate = new Date(year, month, 0);
+  // カレンダー用のテーブルを作成
+  var calendar = document.getElementById("calendar_ID");
+  var table = document.createElement("table");
+  calendar.appendChild(table);
+  // カレンダーの年月、曜日タイトル、日付を作成
+  createHead(table, year, month);
+  createWeekTitle(table);
+  createDayBody(table, year, month, firstDate, lastDate);
+}
+/*----------------------------------------------------------------------------------------- 
+カレンダー作成処理 
+-----------------------------------------------------------------------------------------*/
+for(let i = 0; i <= 2; i++) {
+  createCalender(i);
 }
 
-function daysInMonth(iMonth, iYear) {
-  return 32 - new Date(iYear, iMonth, 32).getDate();
-}

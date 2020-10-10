@@ -1,0 +1,31 @@
+div {
+  display: flex;
+}
+
+caption {
+  background-color: blue;
+  font: bold;
+  color: #fff;
+}
+
+th {
+  background-color: blue;
+  color: #fff;
+}
+
+td {
+  border:solid 1px #666;
+  text-align: right;
+}
+
+.sunday {
+  color: red;
+}
+
+.saturday {
+  color: red;
+}
+
+table {
+  padding-right: 15px;
+}
