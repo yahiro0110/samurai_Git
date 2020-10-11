@@ -2,25 +2,18 @@
 関数の定義 
 -----------------------------------------------------------------------------------------*/
 // HTML要素の作成
-function createHtmlElement(nodeName, elementName, className, innerHtmlText){
+function createHtmlElement(nodeName, elementName, className, colSpanNumber, innerHtmlText){
   let str = document.createElement(elementName);
   str.classList.add(className);
+  str.colSpan = colSpanNumber;
+  //str.setAttribute("colSpan", colSpanNumber);
   str.innerHTML = innerHtmlText;
   nodeName.appendChild(str);
 }
 // カレンダーの年月作成
-function createHead(calendar, table, year, month){
+function createHead(table, year, month){
   let table_title = year + "年 " + month + "月";
-  // 年月を格納するthタグを取得する為の値を計算
-  let num = calendar.childElementCount;
-  if(num == 1){
-    num = 0;
-  } else {
-    num = 8 * (num - 1);
-  }
-  createHtmlElement(table, "th", "head", table_title);
-  let HeadSpan = document.getElementsByTagName('th')[num];
-  HeadSpan.colSpan = 7;
+  createHtmlElement(table, "th", "head", 7, table_title);
 }
 // カレンダーの曜日タイトル作成
 function createWeekTitle(table){
@@ -29,13 +22,13 @@ function createWeekTitle(table){
   for (let i = 0; i < 7; i++) {
     switch (i) {
       case 0:
-        createHtmlElement(weekdaysStr, "th", "sunday", weekdays[i]);
+        createHtmlElement(weekdaysStr, "th", "sunday", 1, weekdays[i]);
         break;
       case 6:
-        createHtmlElement(weekdaysStr, "th", "saturday", weekdays[i]);
+        createHtmlElement(weekdaysStr, "th", "saturday", 1, weekdays[i]);
         break;
       default:
-        createHtmlElement(weekdaysStr, "th", "weekday", weekdays[i]);
+        createHtmlElement(weekdaysStr, "th", "weekday", 1, weekdays[i]);
         break;
     }
   }
@@ -46,7 +39,7 @@ function createDayBody(table, year, month, firstDate, lastDate){
   var daysStr = table.insertRow(table.rows.length);
   let startWeekDay = firstDate.getDay();
   for (let i = 0; i < startWeekDay; i++) {
-    createHtmlElement(daysStr, "td", "nothing", "&nbsp;");
+    createHtmlElement(daysStr, "td", "nothing", 1, "&nbsp;");
   }
   // 日付作成
   for (let i = 1; i <= lastDate.getDate(); i++) {
@@ -56,13 +49,13 @@ function createDayBody(table, year, month, firstDate, lastDate){
     switch (weekType) {
       case 0:
         var daysStr = table.insertRow(table.rows.length);
-        createHtmlElement(daysStr, "td", "sunday", cellStr);
+        createHtmlElement(daysStr, "td", "sunday", 1, cellStr);
         break;
       case 6:
-        createHtmlElement(daysStr, "td", "saturday", cellStr);
+        createHtmlElement(daysStr, "td", "saturday", 1, cellStr);
         break;
       default:
-        createHtmlElement(daysStr, "td", "weekday", cellStr);
+        createHtmlElement(daysStr, "td", "weekday", 1, cellStr);
         break;
     }
   }
@@ -82,7 +75,7 @@ function createCalender(Num){
   var table = document.createElement("table");
   calendar.appendChild(table);
   // カレンダーの年月、曜日タイトル、日付を作成
-  createHead(calendar, table, year, month);
+  createHead(table, year, month);
   createWeekTitle(table);
   createDayBody(table, year, month, firstDate, lastDate);
 }
@@ -92,4 +85,3 @@ function createCalender(Num){
 for(let i = 0; i <= 2; i++) {
   createCalender(i);
 }
-
