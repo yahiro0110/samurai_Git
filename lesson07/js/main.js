@@ -17,12 +17,10 @@ class StudentInfo {
         case 0:
           newTd.innerHTML = this.name;
           break;
-        // case (this.kyoka.lenght + 1):
-        case 6:
+        case this.kyoka.length + 1:
           newTd.innerHTML = this.total;
           break;
-        // case (this.kyoka.lenght + 2):
-        case 7:
+        case this.kyoka.length + 2:
           newTd.innerHTML = this.rank;
           break;
         default:
@@ -39,11 +37,11 @@ class StudentInfo {
 var table = document.getElementById('table_Id');
 let title = ["生徒", "国語", "数学", "理科", "社会", "英語", "合計値", "ランク"];
 let student = [
-  A = new StudentInfo("Aさん", 80, 70, 70, 50, 60),
-  B = new StudentInfo("Bさん", 60, 70, 40, 80, 60),
-  C = new StudentInfo("Cさん", 60, 70, 70, 60, 60),
-  D = new StudentInfo("Dさん", 80, 40, 40, 70, 70),
-  E = new StudentInfo("Eさん", 70, 70, 70, 60, 70)
+  new StudentInfo("Aさん", 80, 70, 70, 50, 60),
+  new StudentInfo("Bさん", 60, 70, 40, 80, 60),
+  new StudentInfo("Cさん", 60, 70, 70, 60, 60),
+  new StudentInfo("Dさん", 80, 40, 40, 70, 70),
+  new StudentInfo("Eさん", 70, 70, 70, 60, 70)
 ];
 /*--- 表のタイトル部分を作成 ---*/
 let newTr = table.insertRow(table.rows.length);
