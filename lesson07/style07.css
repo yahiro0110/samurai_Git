@@ -1,0 +1,11 @@
+th {
+  background-color: forestgreen;
+  color: #fff;
+  width: 80px;
+}
+
+td {
+  width: 80px;
+  text-align: right;
+  border:solid 1px #000;
+}
