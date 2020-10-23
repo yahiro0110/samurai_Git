@@ -15,7 +15,6 @@
 				if ($array[2]==$postnum) {
 					$str = "<p>" . mb_convert_encoding($array[6] . $array[7] . $array[8] , 'UTF-8', 'SJIS') . "</p>";
 					echo "$str";
-					break;
 				}
 			}
 			fclose($fp);
