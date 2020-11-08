@@ -23,7 +23,8 @@
 				if ($result = mysqli_query($link, $query)) {
 					echo "SELECTに成功しました。<br>";
 					foreach($result as $row) {
-						var_dump($row);
+						// var_dump($row);
+						echo "<p>" . $row['pref'] . $row['city'] . $row['address'] . "</p>";
 					}
 				}
 			}
