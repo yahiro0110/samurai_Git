@@ -1,0 +1,9 @@
+th {
+  background-color: forestgreen;
+  color: #fff;
+}
+
+td {
+  text-align: right;
+  border:solid 1px rgb(143, 143, 143);
+}
