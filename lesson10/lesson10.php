@@ -42,10 +42,14 @@
 			}
 			/*--SQL処理--*/
       // MYSQLのアクセス情報
-      $host = 'yamashita.naviiiva.work';
-      $user_name = 'naviiiva_user';
-      $password = '!Samurai1234';
-      $database_name = 'yamashita';
+      // $host = 'yamashita.naviiiva.work';
+      $host = 'localhost';
+      // $user_name = 'naviiiva_user';
+      $user_name = 'yahiro';
+      // $password = '!Samurai1234';
+      $password = '1qaz2wsx';
+      // $database_name = 'yamashita';
+      $database_name = 'sampledb';
       // データベースへの接続
       $mysqli = new mysqli($host, $user_name, $password, $database_name);
       // 接続エラーの確認
