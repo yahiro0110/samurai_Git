@@ -1,0 +1,95 @@
+@import url("base.css");
+@import url("tab.css");
+
+@media screen and (max-width:480px) {
+
+  form {
+    width: 300px;
+  }
+  
+  input[type="text"] {
+    width: 250px;
+  }
+
+  ::placeholder {
+    font-size: 12px;
+  }
+
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: rgb(41, 56, 95);
+  border: solid 1px rgb(143, 143, 143);
+  padding: 5px 5px;
+  color: #fff;
+  
+}
+
+td {
+  border: solid 1px rgb(143, 143, 143);
+  border-top: none;
+  padding: 5px 5px;
+  text-align: left;
+  
+}
+
+.name1, .name2, .name_kana1, .name_kana2 {
+  width: 100px;
+}
+
+.postal {
+  width: 120px;
+}
+
+.address {
+  width: 350px;
+}
+
+.phone, .cellphone {
+  width: 150px;
+}
+
+.mail {
+  width: 350px;
+}
+
+.kousin, .sakujyo {
+  width: 50px;
+  text-align: center;
+}
+
+.kensaku, .view_button, .tab-panel {
+  padding: 0 10px;
+}
+
+.kensaku input {
+  margin-bottom: 5px;
+}
+
+.view_button {
+  text-align: right;
+  margin: 5px 0;
+}
+
+.namae {
+  width: 150px;
+}
+
+.jyusyo {
+  width: 500px;
+}
+
+#record_col {
+  margin-left: 10px;
+}
+
+.table-panel {
+  overflow-x: auto;
+}

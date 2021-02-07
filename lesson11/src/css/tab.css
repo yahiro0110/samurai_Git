@@ -1,0 +1,38 @@
+.tab-group{
+  display: flex;
+  justify-content: center;
+}
+
+.tab{
+  flex-grow: 1;
+  padding:5px;
+  list-style:none;
+  border:solid 1px #CCC;
+  text-align:center;
+  cursor:pointer;
+}
+
+.tab.is-active{
+  background:rgb(189, 19, 19);
+  color:#FFF;
+  transition: all 0.2s ease-out;
+}
+
+.panel-group{
+  height:100%;
+  border:solid 1px #CCC;
+  border-top:none;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+  /* background:#eee; */
+}
+
+.panel{
+  display:none;
+}
+
+.panel.is-show{
+  display:table-row;
+}

@@ -1,0 +1,62 @@
+@import url("base.css");
+
+@media screen and (max-width:480px) {
+
+  form {
+    margin: 0 auto;
+    width: 300px;
+  }
+  
+  input[type="text"] {
+    width: 250px;
+  }
+  
+  .register input {
+    margin-bottom: 30px;
+  }
+  
+  .inline-block_test {
+    display: inline-block;     /* インラインブロック要素にする */
+    vertical-align: middle;    /* 要素を上下中央揃えにする */
+  }
+
+  ::placeholder {
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (min-width:801px) {
+
+  form {
+    margin: 0 auto;
+    width: 500px;
+  }
+
+  input[type="text"] {
+    width: 500px;
+  }
+
+  .register input {
+    margin-bottom: 30px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .namae input[type="text"], .yubin input[type="text"]{
+    width: 245px;
+  }
+
+  .address input, .mail_address input {
+    width: 500px;
+  }
+
+  .inline-block_test {
+    display: inline-block;     /* インラインブロック要素にする */
+    vertical-align: middle;    /* 要素を上下中央揃えにする */
+  }
+
+}

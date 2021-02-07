@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+}
+
+header {
+  background-color: rgb(29, 28, 28);
+  width: auto;
+  padding: 10px 15px;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 20px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #ddd;
+}
+
+input[type="text"] {
+  /* width: 500px; */
+  padding: 10px 15px; /*ボックスを大きくする*/
+  font-size: 16px;
+  border-radius: 3px; /*ボックス角の丸み*/
+  border: 2px solid #ddd; /*枠線*/
+  box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+input[type="text"]:focus {
+  outline: 1px solid rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.1);
+  z-index: 10;
+  /* outline: 0; */
+}
+
+input[type="submit"] {
+  padding: 5px 10px;
+}
+
+input[type="button"] {
+  padding: 5px 10px;
+}
+
+.link_tag {
+  text-align: right;
+}
+
+::placeholder {
+  color: rgb(172, 172, 172);
+}
