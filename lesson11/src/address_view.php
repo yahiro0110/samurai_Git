@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/address_view.css">
+  <link rel="stylesheet" href="css/toastr.min.css">
   <title>住所一覧表示</title>
 </head>
 
 <body class="address_view-body">
-
+  
   <header>
+    <h1 class="title">Address Book</h1>
     <div class="link_tag">
       <a href="address_add.php">住所登録</a>
     </div>
@@ -32,7 +34,6 @@
     </div>
   </form>
   <h1>住所一覧表示</h1>
-  <p id="record_col"></p>
   <div class="tab-panel">
     <!--タブ-->
     <ul class="tab-group" id="tab_id">
@@ -72,12 +73,6 @@
               $query = str_replace(' WHERE', '', $query);
             }
             $count = sqlSelect($mysqli, $query);
-            echo <<<EOM
-              <script type="text/javascript">
-                const record = document.getElementById('record_col');
-                record.innerHTML = {$count} +"件の登録情報を検索しました";
-              </script>
-            EOM;
             break;
           default:
             $query = 'SELECT * FROM t_address';
@@ -90,7 +85,51 @@
       </div>
     </div>
   </div>
-  <script src="js/tab_switch.js"></script>
+  <script src="js/tab_switch-view.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/toastr.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      toastr.options.timeOut = 3000; // 3秒
+      toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      <?php
+        switch($key) {
+          case "":
+            break;
+          case "登録":
+            print 'Command: toastr.info("'.$key.'しました");';
+            break;
+          case "検索":
+            print 'Command: toastr.success("'.$count.'件の情報を検索しました");';
+            break;
+          case "更新":
+            print 'Command: toastr.success("'.$key.'しました");';
+            break;
+          case "削除":
+            print 'Command: toastr.error("'.$key.'しました");';
+            break;
+          default:
+            print 'Command: toastr.waring("予期せぬ$keyを受け取りました");';
+            break;
+        }
+      ?>
+    });
+  </script>
 </body>
 
 </html>

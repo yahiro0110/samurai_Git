@@ -13,7 +13,9 @@
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('sssssssss', $name1, $name2, $name_kana1, $name_kana2, $postal, $address, $phone, $cellphone, $mail);
       $stmt->execute();
-      print "<h3>登録しました</h3>";
+      header('Location:address_view.php', true, 307);
+      exit();
+      // print "<h3>登録しました</h3>";
       break;
     case '更新':
       $query = 'UPDATE t_address 
@@ -23,17 +25,22 @@
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('sssssssssi', $name1, $name2, $name_kana1, $name_kana2, $postal, $address, $phone, $cellphone, $mail, $id);
       $stmt->execute();
-      print "<h3>更新しました</h3>";
+      header('Location:address_view.php', true, 307);
+      exit();
+      // print "<h3>更新しました</h3>";
       break;
     case '削除':
       $query = 'DELETE FROM t_address WHERE id=?';
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('i', $id);
       $stmt->execute();
-      print "<h3>削除しました</h3>";
+      header('Location:address_view.php', true, 307);
+      exit();
+      // print "<h3>削除しました</h3>";
       break;
     default:
       print '<h3>例外が発生しました！$keyが正しく受け取られていません！</h3>';
+      print '<a href="address_view.php">表示画面に戻る</a>';
       break;
   }
   // データベースから切断
@@ -41,7 +48,5 @@
   $mysqli->close();
   // 処理結果の表示
   ?>
-
-  <a href="address_view.php">表示画面に戻る</a>
 
 </body>
