@@ -98,8 +98,8 @@ function createHtmlTable($result, $count){
           break;
       }
     }
-    $html .= '<td class="kousin"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="更新" formaction="address_add.php"></td>';
-    $html .= '<td class="sakujyo"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="削除" formaction="address_check.php"></td>';
+    $html .= '<td class="kousin"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="更新" formaction="address-add.php"></td>';
+    $html .= '<td class="sakujyo"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="削除" formaction="address-check.php"></td>';
     $html .= "</tr>";
   }
   if ($count !== 0) {

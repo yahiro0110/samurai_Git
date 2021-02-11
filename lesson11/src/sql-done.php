@@ -1,7 +1,7 @@
 <body>
   <?php
-  include_once('lib/post_parameters.php');
-  include_once('db_access.php');
+  include_once('lib/post-parameters.php');
+  include_once('db-access.php');
   // SQLの操作
   switch ($key) {
     case '登録':
@@ -13,7 +13,7 @@
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('sssssssss', $name1, $name2, $name_kana1, $name_kana2, $postal, $address, $phone, $cellphone, $mail);
       $stmt->execute();
-      header('Location:address_view.php', true, 307);
+      header('Location:address-view.php', true, 307);
       exit();
       // print "<h3>登録しました</h3>";
       break;
@@ -25,7 +25,7 @@
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('sssssssssi', $name1, $name2, $name_kana1, $name_kana2, $postal, $address, $phone, $cellphone, $mail, $id);
       $stmt->execute();
-      header('Location:address_view.php', true, 307);
+      header('Location:address-view.php', true, 307);
       exit();
       // print "<h3>更新しました</h3>";
       break;
@@ -34,13 +34,13 @@
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param('i', $id);
       $stmt->execute();
-      header('Location:address_view.php', true, 307);
+      header('Location:address-view.php', true, 307);
       exit();
       // print "<h3>削除しました</h3>";
       break;
     default:
       print '<h3>例外が発生しました！$keyが正しく受け取られていません！</h3>';
-      print '<a href="address_view.php">表示画面に戻る</a>';
+      print '<a href="address-view.php">表示画面に戻る</a>';
       break;
   }
   // データベースから切断

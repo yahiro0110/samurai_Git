@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>操作確認</title>
-  <link rel="stylesheet" href="css/address_check.css">
+  <link rel="stylesheet" href="css/address-check.css">
 </head>
 
 <body>
   <h1>確認</h1>
   <div class="table_style">
     <?php
-    include_once('lib/post_parameters.php');
+    include_once('lib/post-parameters.php');
     // 必須入力データの確認
     if ($name1 == '' || $name2 == '' || $name_kana1 == '' || $name_kana2 == '' || $postal == '' || $address == '') {
       print '<h3 class="error_msg">エラー：未入力の項目があります！！</h3>';
@@ -72,7 +72,7 @@
       print '<br><input type="button" onclick="history.back()" value="戻る">';
       print '</form>';
     } else {
-      print '<form method="post" action="sql_done.php">';
+      print '<form method="post" action="sql-done.php">';
       print '<input type="hidden" name="id" value="' . $id . '">';
       print '<input type="hidden" name="name1" value="' . $name1 . '">';
       print '<input type="hidden" name="name2" value="' . $name2 . '">';

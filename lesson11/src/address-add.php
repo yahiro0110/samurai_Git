@@ -1,5 +1,5 @@
 <?php
-  include_once('lib/post_parameters.php');
+  include_once('lib/post-parameters.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/address_add.css">
+  <link rel="stylesheet" href="css/address-add.css">
   <script type="text/javascript" src="https://ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
   <?php
   if ($key) {
@@ -23,7 +23,7 @@
 <body>
   <header>
     <div class="link_tag">
-      <a href="address_view.php">住所一覧表示</a>
+      <a href="address-view.php">住所一覧表示</a>
     </div>
   </header>
   <?php
@@ -33,7 +33,7 @@
       print '<h1>住所登録</h1>';
     }
   ?>
-  <form action="address_check.php" method="post" class="register">
+  <form action="address-check.php" method="post" class="register">
     <?php
       print '<input type="hidden" name="id" value="' . $id . '">'
     ?>

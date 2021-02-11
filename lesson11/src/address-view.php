@@ -14,7 +14,7 @@
   <header>
     <h1 class="title">Address Book</h1>
     <div class="link_tag">
-      <a href="address_add.php">住所登録</a>
+      <a href="address-add.php">住所登録</a>
     </div>
   </header>
   <h1>検索</h1>
@@ -54,8 +54,8 @@
       <div class="table-panel">
         <?php
         include_once('lib/functions.php');
-        include_once('lib/post_parameters.php');
-        include_once('db_access.php');
+        include_once('lib/post-parameters.php');
+        include_once('db-access.php');
         // データの取得
         switch ($key) {
           case '検索':
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-  <script src="js/tab_switch-view.js"></script>
+  <script src="js/tab-switch-view.js"></script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/toastr.min.js"></script>
   <script type="text/javascript">
