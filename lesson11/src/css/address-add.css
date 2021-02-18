@@ -1,62 +1,74 @@
 @import url("base.css");
-
-@media screen and (max-width:480px) {
-
+/*--------------------------------------------------
+スマホで表示する場合
+--------------------------------------------------*/
+@media screen and (max-width: 480px) {
+  /*
+  フォーム
+  -------------------------*/
   form {
     margin: 0 auto;
     width: 300px;
   }
-  
+  /*
+  入力項目
+  -------------------------*/
   input[type="text"] {
     width: 250px;
   }
-  
-  .register input {
+  .input_form input {
     margin-bottom: 30px;
   }
-  
-  .inline-block_test {
-    display: inline-block;     /* インラインブロック要素にする */
-    vertical-align: middle;    /* 要素を上下中央揃えにする */
-  }
-
   ::placeholder {
     font-size: 12px;
   }
-
 }
-
-@media screen and (min-width:801px) {
-
+/*--------------------------------------------------
+PCで表示する場合
+--------------------------------------------------*/
+@media screen and (min-width: 480px) {
+  /*
+  フォーム
+  -------------------------*/
   form {
     margin: 0 auto;
     width: 500px;
   }
-
+  /*
+  入力項目
+  -------------------------*/
   input[type="text"] {
     width: 500px;
   }
-
-  .register input {
+  .input_form input {
     margin-bottom: 30px;
   }
-
-  .container {
+  .name_container {
+    /* 横並び */
     display: flex;
     justify-content: space-between;
   }
-
-  .namae input[type="text"], .yubin input[type="text"]{
+  .name input[type="text"],
+  .postal input[type="text"] {
     width: 245px;
   }
-
-  .address input, .mail_address input {
-    width: 500px;
-  }
-
-  .inline-block_test {
-    display: inline-block;     /* インラインブロック要素にする */
-    vertical-align: middle;    /* 要素を上下中央揃えにする */
-  }
-
+}
+/*--------------------------------------------------
+スマホ・PC共通表示
+--------------------------------------------------*/
+/*
+必須表示
+-------------------------*/
+abbr {
+  text-decoration: none;
+}
+abbr::after {
+  content: "必須";
+  background: rgb(189, 19, 19);
+  color: rgb(255, 255, 255);
+  font-size: 10px;
+  padding: 1px 3px;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-radius: 3px;
 }

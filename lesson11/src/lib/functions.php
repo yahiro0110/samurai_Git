@@ -1,13 +1,11 @@
 <?php
-/*--SQLでデータを取得した際の操作--*/
-function sqlSelect($mysqli, $query){
-  $stmt = $mysqli->prepare($query);
+/*------------------------------------------------------------
+SQLでデータを取得する
+------------------------------------------------------------*/
+function sqlSelect($stmt){
   switch ($stmt) {
     case false:
-      print "<p>次の操作に失敗しました...";
-      print $query . "</p>";
-      $error = "エラーNo." . $mysqli->errno . ":" . $mysqli->error;
-      print $error;
+      print '$stmtはfalseです';
       break;
     case true:
       $stmt->execute();
@@ -20,7 +18,9 @@ function sqlSelect($mysqli, $query){
       break;
   }
 }
-/*--SQlでデータを取得した場合テーブルタグでHTMLに表示する--*/
+/*------------------------------------------------------------
+SQlでデータを取得した場合、テーブルタグでHTMLに表示する
+------------------------------------------------------------*/
 function queryGetRecord($result){
   if ($result !== false) {
     $count = $result->num_rows;
@@ -28,11 +28,13 @@ function queryGetRecord($result){
     return $count;
   }
 }
-/*--テーブルタグ生成--*/
+/*------------------------------------------------------------
+テーブルタグを生成する
+------------------------------------------------------------*/
 function createHtmlTable($result, $count){
   $ffields = $result->fetch_fields();
   $html = '<table>';
-  // カラム名
+  /*--カラム名の生成--*/
   $html .= '<tr class="panel panelhead is-show">';
   foreach ($ffields as $val) {
     switch ($val->name) {
@@ -66,15 +68,18 @@ function createHtmlTable($result, $count){
       case 'mail':
         $html .= '<th class="' . $val->name . '">メールアドレス</th>';
         break;
+      case 'account_id':
+        $html .= "<th hidden>account_id</th>";
+        break;
       default:
         $html .= "<th>error</th>";
         break;
     }
   }
-  $html .= '<th class="kousin">更新</th>';
-  $html .= '<th class="sakujyo">削除</th>';
+  $html .= '<th class="update">更新</th>';
+  $html .= '<th class="delete">削除</th>';
   $html .= "</tr>";
-  // レコード
+  /*--取得したレコードの反映--*/
   foreach ($result as $row) {
     $html .= '<tr class="panel ' . nameCheck($row["name_kana1"]) . ' is-show">';
     foreach ($ffields as $val) {
@@ -93,13 +98,16 @@ function createHtmlTable($result, $count){
             $html .= '<td class="' . $val->name . '">なし</td>';
           }
           break;
+        case 'account_id';
+          $html .= '<td hidden><input type="hidden" name="' . $val->name . '" value="' . $value . '" form="form_id' . $row['id'] . '"></td>';
+          break;
         default:
           $html .= '<td class="' . $val->name . '"><input type="hidden" name="' . $val->name . '" value="' . $value . '" form="form_id' . $row['id'] . '">' . $value . '</td>';
           break;
       }
     }
-    $html .= '<td class="kousin"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="更新" formaction="address-add.php"></td>';
-    $html .= '<td class="sakujyo"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="削除" formaction="address-check.php"></td>';
+    $html .= '<td class="update"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="更新" formaction="address-add.php"></td>';
+    $html .= '<td class="delete"><input type="submit" name="key" form="form_id' . $row['id'] . '" value="削除" formaction="address-check.php"></td>';
     $html .= "</tr>";
   }
   if ($count !== 0) {
@@ -110,7 +118,9 @@ function createHtmlTable($result, $count){
   $html .= "</table>";
   return $html;
 }
-/*--タブ表示時のグループ分け--*/
+/*------------------------------------------------------------
+タブ表示時のグループ分け
+------------------------------------------------------------*/
 function nameCheck($name){
   if (preg_match('/^[あ-お]/u', $name)) {
     return "panel-1";
@@ -132,6 +142,30 @@ function nameCheck($name){
     return "panel-9";
   } elseif (preg_match('/^[わ]/u', $name)) {
     return "panel-10";
+  }
+}
+/*------------------------------------------------------------
+アカウント情報の取得
+------------------------------------------------------------*/
+function sqlAccount($stmt) {
+  switch ($stmt) {
+    case false:
+      print '<p>$stmtはfalse</p>';
+      break;
+    case true:
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $stmt->free_result();
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+      if ($row !== null && password_verify($_POST['pass'], $row['pass'])) {
+        return $row['account_id'];
+      } else {
+        return "false";
+        }
+      break;
+    default:
+      print "例外が発生しました";
+      break;
   }
 }
 ?>

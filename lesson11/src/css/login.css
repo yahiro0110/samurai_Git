@@ -1,0 +1,173 @@
+@import url("base.css");
+/*--------------------------------------------------
+スマホで表示する場合
+--------------------------------------------------*/
+@media screen and (max-width:480px) {
+  /*
+  フォーム
+  -------------------------*/
+  .login-form {
+    padding-top: 50px;
+    margin: 0 auto;
+    width: 300px;
+  }
+  /*
+  入力フォーム内
+  -------------------------*/
+  .panels.is-show {
+    display:block;
+    margin: 0 40px;
+    width: 50%;
+  }
+  label {
+    font-size: 15px;
+  }
+  /*
+  入力項目
+  -------------------------*/
+  input[type="text"], input[type="password"], .input_pass {
+    width: 200px;
+  }
+}
+/*--------------------------------------------------
+PCで表示する場合
+--------------------------------------------------*/
+@media screen and (min-width:480px) {
+  /*
+  フォーム
+  -------------------------*/
+  .login-form {
+    padding-top: 50px;
+    margin: 0 auto;
+    width: 500px;
+  }
+  /*
+  入力フォーム内
+  -------------------------*/
+  .panels.is-show {
+    display:block;
+    margin: 0 auto;
+    width: 50%;
+  }
+  /*
+  入力項目
+  -------------------------*/
+  input[type="text"], input[type="password"], .input_pass {
+    width: 239px;
+  }
+}
+/*--------------------------------------------------
+スマホ・PC共通表示
+--------------------------------------------------*/
+/*
+ログインエラー、
+登録エラーメッセージ
+-------------------------*/
+#error_message-login, #error_message-regist {
+  display: none;
+  color: crimson;
+  padding-bottom: 20px;
+}
+/*
+タブ
+-------------------------*/
+.tab-group {
+  display: flex;
+  justify-content: center;
+}
+.tab {
+  flex-grow: 1;
+  padding:5px;
+  list-style:none;
+  border:solid 1px #CCC;
+  text-align:center;
+  cursor:pointer;
+}
+.tab.is-active {
+  background:rgb(54, 51, 51);
+  color:#FFF;
+  transition: all 0.2s ease-out;
+}
+/*
+入力フォーム内
+-------------------------*/
+/* 未入力、もしくは入力誤りによるエラーメッセージ */
+.error_message {
+  color: crimson;
+  padding-bottom: 10px;
+  font-size: 17px;
+}
+/* 入力フォーム */
+.panel-group {
+  height:100%;
+  border:solid 1px #CCC;
+  padding-top: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+  background:#eee;
+}
+.panels {
+  display:none;
+}
+input {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+input[type="password"] {
+  padding: 10px 15px; /*ボックスを大きくする*/
+  font-size: 16px;
+  border-radius: 3px; /*ボックス角の丸み*/
+  border: 2px solid #ddd; /*枠線*/
+  box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+  z-index: 1;
+}
+input[type="password"]:focus {
+  outline: 1px solid rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.1);
+  z-index: 10;
+}
+/* パスワード入力項目 */
+.input_pass {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+input[type=checkbox] {
+  cursor: pointer;
+  opacity: 0; 
+  position: absolute;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  z-index: 20;
+}
+.iconEye::after {
+  background: url(../image/blind.svg) no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 6px;
+  top: 20px;
+  z-index: 15;
+}
+.iconEye-view {
+  display: none;
+}
+.iconEye-view::after {
+  background: url(../image/eye.svg) no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 6px;
+  top: 20px;
+  z-index: 15;
+}

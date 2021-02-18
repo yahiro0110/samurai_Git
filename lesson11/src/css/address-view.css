@@ -1,37 +1,35 @@
 @import url("base.css");
 @import url("tab.css");
-
+/*--------------------------------------------------
+スマホで表示する場合
+--------------------------------------------------*/
 @media screen and (max-width:480px) {
-
   form {
     width: 300px;
   }
-  
   input[type="text"] {
     width: 250px;
   }
-
   ::placeholder {
     font-size: 12px;
   }
-
 }
-
+/*--------------------------------------------------
+スマホ・PC共通表示
+--------------------------------------------------*/
 table {
   width: 100%;
   table-layout: fixed;
   font-size: 14px;
   border-collapse: collapse;
 }
-
 th {
   background-color: rgb(41, 56, 95);
   border: solid 1px rgb(143, 143, 143);
-  padding: 5px 5px;
+  padding: 3px 3px;
   color: #fff;
   
 }
-
 td {
   border: solid 1px rgb(143, 143, 143);
   border-top: none;
@@ -39,57 +37,52 @@ td {
   text-align: left;
   
 }
-
+/*
+検索フォームに関する箇所
+-------------------------*/
+.search {
+  padding: 0 10px;
+}
+.search input {
+  margin-bottom: 5px;
+}
+.search_name {
+  width: 150px;
+}
+.search_address {
+  width: 500px;
+}
+/*
+取得したデータの表示に関する箇所
+-------------------------*/
+.tab-panel {
+  padding: 0 10px;
+}
+.table-panel {
+  overflow-x: auto;
+}
 .name1, .name2, .name_kana1, .name_kana2 {
   width: 100px;
 }
-
 .postal {
   width: 120px;
 }
-
 .address {
   width: 350px;
 }
-
 .phone, .cellphone {
   width: 150px;
 }
-
 .mail {
   width: 350px;
 }
-
-.kousin, .sakujyo {
+.update, .delete {
   width: 50px;
   text-align: center;
 }
-
-.kensaku, .view_button, .tab-panel {
-  padding: 0 10px;
+.update input[type="submit"] {
+  padding: 2px 5px;
 }
-
-.kensaku input {
-  margin-bottom: 5px;
-}
-
-.view_button {
-  text-align: right;
-  margin: 5px 0;
-}
-
-.namae {
-  width: 150px;
-}
-
-.jyusyo {
-  width: 500px;
-}
-
-#record_col {
-  margin-left: 10px;
-}
-
-.table-panel {
-  overflow-x: auto;
+.delete input[type="submit"] {
+  padding: 2px 5px;
 }

@@ -12,8 +12,9 @@
   <h1>確認</h1>
   <div class="table_style">
     <?php
-    include_once('lib/post-parameters.php');
-    // 必須入力データの確認
+    @session_start();
+    include_once('lib/parameters.php');
+    /*--必須入力データの確認--*/
     if ($name1 == '' || $name2 == '' || $name_kana1 == '' || $name_kana2 == '' || $postal == '' || $address == '') {
       print '<h3 class="error_msg">エラー：未入力の項目があります！！</h3>';
     } else{
@@ -66,7 +67,7 @@
       print '<tr><th>携帯番号</th><td>' . $mail . '</td></tr>';
     }
     print '</table>';
-    // ボタンの生成
+    /*--ボタンの生成--*/
     if ($name1 == '' || $name2 == '' || $name_kana1 == '' || $name_kana2 == '' || $postal == '' || $address == '') {
       print '<form>';
       print '<br><input type="button" onclick="history.back()" value="戻る">';

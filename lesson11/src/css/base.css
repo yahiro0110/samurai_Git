@@ -1,64 +1,76 @@
+/*--------------------------------------------------
+　CSSベース
+--------------------------------------------------*/
 * {
   margin: 0;
   padding: 0;
 }
-
 body {
   width: 100%;
 }
-
-header {
-  background-color: rgb(29, 28, 28);
-  width: auto;
-  padding: 10px 15px;
-}
-
 h1 {
   font-size: 25px;
   margin: 20px 0;
 }
-
+/*
+　header
+-------------------------*/
+header {
+  background-color: rgb(29, 28, 28);
+  width: auto;
+  padding: 10px 15px;
+  height: 50px;
+  position: relative;
+}
+a {
+  color: #ddd;
+  font-size: 15px;
+}
+.logo img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  position: absolute;
+  bottom: -4px;
+}
 .title {
   font-size: 25px;
   color: #ddd;
   margin: 0;
   padding: 0;
-  height: 24px;
+  position: absolute;
+  bottom: -6px;
+  left: 67px;
 }
-
-a {
-  text-decoration: none;
+.link_tag {
+  text-align: right;
   color: #ddd;
 }
-
+.link_tag p {
+  padding-top: 10px;
+  font-size: 15px;
+}
+/*
+フォーム（入力）
+-------------------------*/
 input[type="text"] {
-  /* width: 500px; */
   padding: 10px 15px; /*ボックスを大きくする*/
   font-size: 16px;
   border-radius: 3px; /*ボックス角の丸み*/
   border: 2px solid #ddd; /*枠線*/
   box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
 }
-
 input[type="text"]:focus {
   outline: 1px solid rgb(255, 0, 0);
   background-color: rgba(255, 0, 0, 0.1);
   z-index: 10;
-  /* outline: 0; */
 }
-
-input[type="submit"] {
-  padding: 5px 10px;
-}
-
-input[type="button"] {
-  padding: 5px 10px;
-}
-
-.link_tag {
-  text-align: right;
-}
-
 ::placeholder {
   color: rgb(172, 172, 172);
+}
+/*
+フォーム（ボタン）
+-------------------------*/
+input[type="submit"], input[type="button"] {
+  padding: 5px 10px;
 }

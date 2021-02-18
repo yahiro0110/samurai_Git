@@ -1,12 +1,12 @@
 @import url("base.css");
-
+/*
+確認用テーブル関連
+-------------------------*/
 table {
   table-layout: fixed;
   border-collapse: collapse;
   font-size: 14px;
-  /* padding-left: 100px; */
 }
-
 th {
   background-color: rgb(41, 56, 95);
   border: solid 1px rgb(143, 143, 143);
@@ -15,14 +15,19 @@ th {
   width: 150px;
   height: 30px;
 }
-
 td {
   border: solid 1px rgb(143, 143, 143);
   padding: 5px 5px;
   text-align: left;
   width: 500px;
 }
-
+.table_style {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/*
+エラーメッセージ関連
+-------------------------*/
 .error {
   border: solid 1px rgb(143, 143, 143);
   background-color: rgb(238, 150, 168);
@@ -30,12 +35,6 @@ td {
   text-align: left;
   width: 500px;
 }
-
 .error_msg {
   color: rgb(196, 29, 29);
-}
-
-.table_style {
-  padding-left: 20px;
-  padding-right: 20px;
 }

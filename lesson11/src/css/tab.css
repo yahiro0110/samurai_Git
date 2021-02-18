@@ -1,9 +1,11 @@
-.tab-group{
+/*
+タブ
+-------------------------*/
+.tab-group {
   display: flex;
   justify-content: center;
 }
-
-.tab{
+.tab {
   flex-grow: 1;
   padding:5px;
   list-style:none;
@@ -11,14 +13,15 @@
   text-align:center;
   cursor:pointer;
 }
-
-.tab.is-active{
+.tab.is-active {
   background:rgb(189, 19, 19);
   color:#FFF;
   transition: all 0.2s ease-out;
 }
-
-.panel-group{
+/*
+タブ内のデータ表示
+-------------------------*/
+.panel-group {
   height:100%;
   border:solid 1px #CCC;
   border-top:none;
@@ -28,11 +31,9 @@
   padding-bottom: 50px;
   /* background:#eee; */
 }
-
-.panel{
+.panel {
   display:none;
 }
-
-.panel.is-show{
+.panel.is-show {
   display:table-row;
 }
